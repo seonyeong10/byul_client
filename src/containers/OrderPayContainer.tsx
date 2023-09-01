@@ -1,15 +1,15 @@
 import { GapFlex } from "@components/div";
 // import reactSvg from "@assets/react.svg";
-import { ButtonWrap, Charge, CircleImg, Discount, GreyBox, GroupName, LineBox, MethodWrap, PaddingBox, PageTitle, PayMethod } from "@components/payment";
+import { ButtonWrap, Charge, CircleImg, /*Discount,*/ GreyBox, GroupName, LineBox, MethodWrap, PaddingBox, PageTitle, PayMethod } from "@components/payment";
 import { Button, LinedButton } from "@components/button";
-import { ChangeEventHandler, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { OrderItemType } from "@config/types/OrderType";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { PaymentType, PrepareType } from "@config/types/PaymentType";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@redux-modules/index";
-import { set } from "@redux-modules/payment";
+import { PrepareType } from "@config/types/PaymentType";
+//import { useDispatch, useSelector } from "react-redux";
+//import { RootState } from "@redux-modules/index";
+//import { set } from "@redux-modules/payment";
 
 
 function OrderPayContainer() {

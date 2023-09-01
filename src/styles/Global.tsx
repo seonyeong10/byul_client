@@ -84,6 +84,14 @@ const GlobalStyle = createGlobalStyle`
         background-image: url('http://localhost:5173/src/assets/icons/user-profile.svg');
       }
     }
+
+    @media screen and (max-width: 800px) {
+      /*모달*/
+      #myModal {
+        inset: auto 0px auto auto !important;
+        height: 100vh !important;
+      }
+    }
 `;
 
 export default GlobalStyle;

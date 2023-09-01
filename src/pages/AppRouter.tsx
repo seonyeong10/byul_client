@@ -28,10 +28,10 @@ function AppRouter() {
         /**
          * 페이지가 새로고침되면 토큰을 재발급한다.
         */
-       if (localStorage === null) {
+       if (localStorage.length == 0) {
             return;
        }
-       
+
        axios.post("http://localhost:8090/api/v1/login/reissue", {
            "accessToken": localStorage.getItem("accessToken"),
            "refreshToken": localStorage.getItem("refreshToken")

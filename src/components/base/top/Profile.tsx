@@ -7,10 +7,6 @@ type ProfileType = {
     children: ReactNode
 }
 
-type BackgroundType = {
-    onClick?: () => void
-}
-
 const ProfileWrap = styled.div`
     display: inline-block;
 
@@ -18,29 +14,12 @@ const ProfileWrap = styled.div`
         vertical-align: middle;
     }
 
-    @media(max-width: 800px) {
+    @media screen and (max-width: 800px) {
         button {
             width: 3vw;
             height: 3vw;
         }
-        
     }
-
-`;
-
-const Background = styled.div`
-    display: none;
-    cursor: pointer;
-
-    @media(max-width: 800px) {
-        background-color: ${colors.black.regular};
-        position: absolute;
-        top: 0; 
-        left: -5vw;
-        width: 100vw;
-        height: 100vh;
-    }
-
 `;
 
 const Profile = forwardRef<HTMLDivElement, ProfileType>(({ children }, ref) => {
@@ -51,8 +30,4 @@ const Profile = forwardRef<HTMLDivElement, ProfileType>(({ children }, ref) => {
     );
 });
 
-const ProfileBg = forwardRef<HTMLDivElement, BackgroundType>(({ onClick }, ref) => {
-    return <Background ref={ref} onClick={onClick}/>;
-});
-
-export { Profile, ProfileBg };
+export { Profile };

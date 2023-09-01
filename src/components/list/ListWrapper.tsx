@@ -7,6 +7,10 @@ import styled from "styled-components";
 const ListWrapper = styled(Grid)`
     grid-template-columns: repeat(auto-fill, calc(20%));
 
+    & > h3 {
+        margin-bottom: 2rem;
+    }
+
     @media(max-width: 800px) {
         grid-template-columns: repeat(auto-fill, calc(100% / 3));
         //3번째 child 이후 표시 안함

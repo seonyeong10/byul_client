@@ -13,7 +13,7 @@ const Note = styled.p`
     }
 
     @media(max-width: 800px) {
-        padding: 5vw 0;
+        padding: 2vw 0;
     }
 `;
 

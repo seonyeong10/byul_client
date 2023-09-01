@@ -1,7 +1,7 @@
 import { ColorButton, ColorLinedButton } from "@components/button";
 import { Center, GapFlex } from "@components/div";
 import { OptChildWrap, OptionBox } from "@components/form";
-import { PeriodPopup, PopupWrapper } from "@components/popup";
+import { PeriodPopup } from "@components/popup";
 import { Note } from "@components/text";
 import { PopupTitle } from "@components/title";
 
@@ -14,9 +14,8 @@ type PeriodPopupType = {
     close: () => void
 }
 
-function PeriodPopupContainer({ open, params = {startDate: new Date().toISOString().substring(0, 10), endDate: new Date().toISOString().substring(0, 10)}, search, close }: PeriodPopupType) {
+function PeriodPopupContainer({ params = {startDate: new Date().toISOString().substring(0, 10), endDate: new Date().toISOString().substring(0, 10)}, search, close }: PeriodPopupType) {
     //== ref ==//
-    const popupRef = useRef<HTMLDivElement>(null);
     const periodRefs = useRef<null[] | HTMLInputElement[]>([]);
 
     //== variable ==//
@@ -24,11 +23,6 @@ function PeriodPopupContainer({ open, params = {startDate: new Date().toISOStrin
     const now = today.toISOString().substring(0, 10);
     const oneMonthAgo = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()+1).toISOString().substring(0,10);
     const oneYearAgo = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate()+1).toISOString().substring(0,10);
-
-    if(!open) {
-        return;
-    }
-
 
     //== function ==//
     /**
@@ -80,65 +74,63 @@ function PeriodPopupContainer({ open, params = {startDate: new Date().toISOStrin
     }
 
     return (
-        <PopupWrapper ref={popupRef}>
-            <PeriodPopup>
-                <PopupTitle>기간 설정</PopupTitle>
-                <OptionBox name="시작일">
-                    <OptChildWrap>
-                        <input id="period-start" 
-                            type="date" 
-                            name="startDate" 
-                            value={params.startDate ?? now}
-                            onChange={(e) => changeDate.start(e)}/>
-                    </OptChildWrap>
-                </OptionBox>
-                <OptionBox name="종료일">
-                    <OptChildWrap>
-                        <input id="period-end" 
-                            type="date"
-                            name="endDate" 
-                            value={params.endDate ?? now}
-                            onChange={(e) => changeDate.end(e)}/>
-                    </OptChildWrap>
-                </OptionBox>
-                <Center>
-                    <label htmlFor="period-1m">
-                        <input id="period-1m" 
-                            type="radio" 
-                            name="period" 
-                            value="MONTH"
-                            checked={(params.startDate === oneMonthAgo) && (params.endDate === now)}
-                            ref={el => periodRefs.current[0] = el}
-                            onChange={(e) => onClickRadio(e)}/> 1개월
-                    </label>
-                    <label htmlFor="period-1y">
-                        <input id="period-1y" 
-                            type="radio" 
-                            name="period" 
-                            value="YEAR" 
-                            checked={(params.startDate === oneYearAgo) && (params.endDate === now)}
-                            ref={el => periodRefs.current[1] = el}
-                            onChange={(e) => onClickRadio(e)}/> 1년
-                    </label>
-                    <label htmlFor="period-custom">
-                        <input id="period-custom" 
-                            type="radio" 
-                            name="period" 
-                            value="CUSTOM"
-                            checked={(params.startDate !== oneMonthAgo && params.startDate !== oneYearAgo) || (params.endDate !== now)}
-                            ref={el => periodRefs.current[2] = el}
-                            onChange={(e) => onClickRadio(e)}/> 기간 설정
-                    </label>
-                    <Note>
-                        최근 1년까지의 이력만 조회 가능합니다.
-                    </Note>
-                    <GapFlex gap={2}>
-                        <ColorLinedButton onClick={() => cancel()}>취소</ColorLinedButton>
-                        <ColorButton onClick={close}>완료</ColorButton>
-                    </GapFlex>
-                </Center>
-            </PeriodPopup>
-        </PopupWrapper>
+        <PeriodPopup>
+            <PopupTitle>기간 설정</PopupTitle>
+            <OptionBox name="시작일">
+                <OptChildWrap>
+                    <input id="period-start" 
+                        type="date" 
+                        name="startDate" 
+                        value={params.startDate ?? now}
+                        onChange={(e) => changeDate.start(e)}/>
+                </OptChildWrap>
+            </OptionBox>
+            <OptionBox name="종료일">
+                <OptChildWrap>
+                    <input id="period-end" 
+                        type="date"
+                        name="endDate" 
+                        value={params.endDate ?? now}
+                        onChange={(e) => changeDate.end(e)}/>
+                </OptChildWrap>
+            </OptionBox>
+            <Center>
+                <label htmlFor="period-1m">
+                    <input id="period-1m" 
+                        type="radio" 
+                        name="period" 
+                        value="MONTH"
+                        checked={(params.startDate === oneMonthAgo) && (params.endDate === now)}
+                        ref={el => periodRefs.current[0] = el}
+                        onChange={(e) => onClickRadio(e)}/> 1개월
+                </label>
+                <label htmlFor="period-1y">
+                    <input id="period-1y" 
+                        type="radio" 
+                        name="period" 
+                        value="YEAR" 
+                        checked={(params.startDate === oneYearAgo) && (params.endDate === now)}
+                        ref={el => periodRefs.current[1] = el}
+                        onChange={(e) => onClickRadio(e)}/> 1년
+                </label>
+                <label htmlFor="period-custom">
+                    <input id="period-custom" 
+                        type="radio" 
+                        name="period" 
+                        value="CUSTOM"
+                        checked={(params.startDate !== oneMonthAgo && params.startDate !== oneYearAgo) || (params.endDate !== now)}
+                        ref={el => periodRefs.current[2] = el}
+                        onChange={(e) => onClickRadio(e)}/> 기간 설정
+                </label>
+                <Note>
+                    최근 1년까지의 이력만 조회 가능합니다.
+                </Note>
+                <GapFlex gap={2}>
+                    <ColorLinedButton onClick={() => cancel()}>취소</ColorLinedButton>
+                    <ColorButton onClick={close}>완료</ColorButton>
+                </GapFlex>
+            </Center>
+        </PeriodPopup>
     );
 }
 

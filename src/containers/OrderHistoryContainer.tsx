@@ -13,6 +13,8 @@ import { HistoryType } from "@config/types/HistoryType";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "@redux-modules/index";
+import { PageTitle } from "@components/payment";
+import { Modal } from "@components/popup/Modal";
 
 type HistoryParamType = {
     startDate: string,
@@ -28,6 +30,7 @@ function OrderHistroyContainer() {
     });
     const [histories, initHistory] = useState<HistoryType[]>([]);
     const navigator = useNavigate();
+    const [isOpen, setOpen] = useState(false);
 
     //== redux ==//
     const { memberId } = useSelector((state: RootState) => ({ memberId: state.user.id }));
@@ -48,7 +51,7 @@ function OrderHistroyContainer() {
      */
     const getData = () => {
         if(memberId < 0 || memberId === null || memberId === undefined) {
-            alert("로그인 후 이용해주세요.");
+            //alert("로그인 후 이용해주세요.");
             return;
         }
 
@@ -80,18 +83,27 @@ function OrderHistroyContainer() {
         openPeriodSetting(!periodSetting);
     }
 
-    if(memberId < 0 || memberId === null || memberId === undefined) {
-        alert("로그인 후 이용해주세요.");
-        return null;
+    const handleModal = () => {
+        setOpen(!isOpen);
     }
+
+    // if(memberId < 0 || memberId === null || memberId === undefined) {
+    //     alert("로그인 후 이용해주세요.");
+    //     return null;
+    // }
 
     return(
         <ListWrapper>
-            <PeriodPopupContainer open={periodSetting} params={params} search={setSearchParam} close={() => openPeriod()}/>
+            <PageTitle>주문 히스토리</PageTitle>
             <ListHeader>
-                <SectionTitle>{params.startDate} ~ {params.endDate}</SectionTitle>
-                <Anchor to="#" onClick={() => openPeriod()}>기간 설정</Anchor>
+                <p style={{padding: '10px 0'}}>{params.startDate} ~ {params.endDate}</p>
+                {/* <Anchor to="#" onClick={() => openPeriod()}>기간 설정</Anchor> */}
+                <Anchor to="#" onClick={() => handleModal()}>기간 설정</Anchor>
             </ListHeader>
+            <Modal isOpen={isOpen} closeModal={handleModal}>
+                <PeriodPopupContainer open={periodSetting} params={params} search={setSearchParam} close={() => handleModal()}/>
+            </Modal>
+            
             {
                 histories.map((his, index) => {
                     return (
