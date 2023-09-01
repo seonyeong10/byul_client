@@ -1,27 +1,48 @@
-# React + TypeScript + Vite
+# byul_client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+개인 프로젝트 프론트엔드 Repository
 
-Currently, two official plugins are available:
+<br/>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 프로젝트 특징
 
-## Expanding the ESLint configuration
+- React, SpringBoot를 기반으로 한 카페 웹페이지
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- 프론트 엔드와 백엔드를 분리하여 프로젝트 개발
 
-- Configure the top-level `parserOptions` property like this:
+- 회원가입과 로그인, 주문 및 결제에 대한 CRUD 중점으로 구현
+  - 로그인은 JWT방식으로 구현
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- RestAPI 방식의 CRUD
+  - 상품의 기본순/인기순/최신순 조회
+  - 퍼스널 옵션 선택
+  - 상품 주문하기 및 주문 내역 조회
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+<br/>
+
+## 개요
+
+- 명칭 : byul_client
+
+- 개발인원 : 1명
+
+- 개발기간 : 2023.06 ~
+
+- 주요기능
+  - 카테고리별 상품 조회
+  - 회원가입과 간편 로그인
+  - 기호에 맞는 퍼스널 옵션 선택
+  - 장바구니 담기
+  - 주문하기, 간편 결제
+  - 기간별 주문 내역 조회
+
+- 개발환경 : nodejs19.5.0 / React, Vite4.4.5, Typescript5.0.2
+  [사용 모듈]
+  - react-dom, react-router-dom
+  - qs
+  - axios
+  - redux, reduxjs/toolkit
+  - utf8
+  - react-modal
+ 
+- 형상관리 툴 : git
