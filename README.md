@@ -46,3 +46,9 @@
   - react-modal
  
 - 형상관리 툴 : git
+
+<br/>
+
+## 화면 흐름도
+
+![screenFlow](https://github.com/seonyeong10/byul_client/assets/78454631/533cd04f-93d3-4d44-b2e5-2d79a5542bfe)
