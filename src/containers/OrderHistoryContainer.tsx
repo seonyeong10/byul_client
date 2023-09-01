@@ -3,7 +3,6 @@ import { Center, Line } from "@components/div";
 import { SmallText } from "@components/text";
 import { ListHeader, ListWrapper, TBody, TBodyChild, TName } from "@components/list";
 import { Anchor } from "@components/button";
-import { SectionTitle } from "@components/title";
 import { OptionBox } from "@components/form";
 import PeriodPopupContainer from "./popup/PeriodPopupContainer";
 
@@ -51,7 +50,7 @@ function OrderHistroyContainer() {
      */
     const getData = () => {
         if(memberId < 0 || memberId === null || memberId === undefined) {
-            //alert("로그인 후 이용해주세요.");
+            alert("로그인 후 이용해주세요.");
             return;
         }
 
@@ -87,10 +86,10 @@ function OrderHistroyContainer() {
         setOpen(!isOpen);
     }
 
-    // if(memberId < 0 || memberId === null || memberId === undefined) {
-    //     alert("로그인 후 이용해주세요.");
-    //     return null;
-    // }
+    if(memberId < 0 || memberId === null || memberId === undefined) {
+        alert("로그인 후 이용해주세요.");
+        return null;
+    }
 
     return(
         <ListWrapper>
