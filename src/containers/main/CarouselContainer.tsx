@@ -60,9 +60,11 @@ function CarouselContainer () {
                     <Link to="#" className="next-carousel" onClick={() => onClickButton.next()}/>
                 </div>
                 <div className="slider-container">
-                    <Link to="#" onClick={() => onClickButton.move(0)}/>
-                    <Link to="#" onClick={() => onClickButton.move(1)}/>
-                    <Link to="#" onClick={() => onClickButton.move(2)}/>
+                    {
+                        images.map((i, idx) => {
+                            return <Link to="#" onClick={() => onClickButton.move(idx)}/>
+                        })
+                    }
                 </div>
             </Slider>
         </div>
