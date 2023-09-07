@@ -2,11 +2,7 @@ import { Content } from "@components/base";
 import ItemInfoContainer from "@containers/ItemInfoContainer";
 import { useParams } from "react-router-dom";
 
-type MenuInfoType = {
-    height: number
-}
-
-function MenuInfo({ height }: MenuInfoType) {
+function MenuInfo() {
     const params = useParams();
 
     if(!params.itemId) {
@@ -14,7 +10,7 @@ function MenuInfo({ height }: MenuInfoType) {
     }
 
     return (
-        <Content height={height}>
+        <Content >
             <ItemInfoContainer />
         </Content>
     );

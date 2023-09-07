@@ -19,11 +19,7 @@ const ButtonWrap = styled.div`
     padding-top: 3vw;
 `;
 
-type Type = {
-    height: number
-}
-
-function OrderHistoryInfoContainer({ height }: Type) {
+function OrderHistoryInfoContainer() {
     const [history, record] = useState<HistoryType>();
     const navigate = useNavigate();
     const params = useParams();
@@ -39,8 +35,8 @@ function OrderHistoryInfoContainer({ height }: Type) {
 
     useEffect(() => {
         if(memberId < 0 || memberId === null || memberId === undefined) {
-            alert("로그인 후 이용해주세요.");
-            return;
+            //alert("로그인 후 이용해주세요.");
+            //return;
         }
 
         axios.get(`http://localhost:8090/api/v1/my/${1}/history/${params.orderId}`, {
@@ -132,7 +128,7 @@ function OrderHistoryInfoContainer({ height }: Type) {
     }
 
     return (
-        <InfoStatusWrapper height={height}>
+        <InfoStatusWrapper >
             <StatusWrap>
                 {
                     history?.status[0] === 'CANCEL' ?
@@ -175,7 +171,6 @@ function OrderHistoryInfoContainer({ height }: Type) {
                         );
                     })
                 }
-                {/* 
                 <DetailBox>
                     <TName>아이스 아메리카노</TName>
                     <OptionBox name={`ICED | Tall | 일회용컵`}>
@@ -188,7 +183,6 @@ function OrderHistoryInfoContainer({ height }: Type) {
                         <OptChildWrap><b>600원</b></OptChildWrap>
                     </OptionBox>
                 </DetailBox> 
-                */}
                 <OptionBox name={`합계`}>
                     <OptChildWrap><b>{history?.totalPrice.toLocaleString("ko-KR")}원</b></OptChildWrap>
                 </OptionBox>

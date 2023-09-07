@@ -1,13 +1,9 @@
 import { Content } from "@components/base";
 import CartContainer from "@containers/CartContainer";
 
-type Type = {
-    height: number
-}
-
-function Cart({ height }: Type) {
+function Cart() {
     return (
-        <Content height={height}>
+        <Content >
             <CartContainer />
         </Content>
     );

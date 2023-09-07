@@ -1,13 +1,9 @@
 import { Content } from "@components/base";
 import OrderHistroyContainer from "@containers/OrderHistoryContainer";
 
-type Type = {
-    height: number
-}
-
-function OrderHistory({ height }: Type) {
+function OrderHistory() {
     return (
-        <Content height={height}>
+        <Content >
             <OrderHistroyContainer/>
         </Content>
     );

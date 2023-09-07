@@ -7,7 +7,7 @@ interface ContentProps {
 //== style ==//
 
 const Content = styled.div<ContentProps>`
-    padding: 20px 0;
+    padding: 2vw 0 20px;
     padding-top: ${props => props.height + 'px' ?? 0};
 `;
 

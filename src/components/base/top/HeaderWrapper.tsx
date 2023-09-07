@@ -13,7 +13,8 @@ const Header = styled.div<HeaderType>`
     width: 90vw; //body: padding: 0 5vw
     padding-top: 1vw;
 
-    position: fixed;
+    //position: fixed;
+    position: sticky;
 `;
 
 //== component ==//

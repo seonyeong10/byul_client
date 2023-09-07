@@ -10,11 +10,13 @@ function SubHeaderContainer() {
     const location = useLocation();
     const paths = location.pathname.substring(1).split("/");
 
+    console.log(paths);
+
     if (paths.includes("order") || paths.includes("my")) {
         return null;
     }
 
-    if (paths.length > 3) {
+    if (paths.length > 3 || paths[0] === '') {
         return null;
     }
 

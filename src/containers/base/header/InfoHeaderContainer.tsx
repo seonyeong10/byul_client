@@ -10,6 +10,8 @@ function InfoHeaderContainer() {
     const location = useLocation();
     const params = location.pathname.substring(1).split("/");
     const view = useSelector((state: RootState) => state.base.view);
+
+    if (params.includes("order") || params.includes("my")) return null;
     
     if (params.length < 4) {
         return null;

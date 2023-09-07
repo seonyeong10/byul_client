@@ -18,6 +18,7 @@ import { init } from "@redux-modules/user";
 import Logout from "./Logout";
 import OrderPay from "./OrderPay";
 import Success from "./pay/Success";
+import Main from "./Main";
 
 
 function AppRouter() {
@@ -56,20 +57,21 @@ function AppRouter() {
                 </Route>
                 <Route path="/logout" element={<Logout />}/>
                 <Route path="/my">
-                    <Route path=":memberId/cart" element={<Cart height={headerHeight}/>}/>
-                    <Route path=":memberId/history" element={<OrderHistory height={headerHeight}/>}/>
-                    <Route path=":memberId/history/:orderId" element={<OrderHistoryInfo height={headerHeight}/>}/>
+                    <Route path=":memberId/cart" element={<Cart />}/>
+                    <Route path=":memberId/history" element={<OrderHistory />}/>
+                    <Route path=":memberId/history/:orderId" element={<OrderHistoryInfo />}/>
                 </Route>
                 <Route path="/order">
                     <Route path="pay/:platform/success" element={<Success />}/>
                     <Route path=":orderId" element={<OrderPay />}/>
                 </Route>
                 <Route path="/:dtype" >
-                    <Route path="" element={<MenuList height={headerHeight}/>}/>
-                    <Route path=":category1" element={<MenuList height={headerHeight}/>}/>
-                    <Route path=":category1/:category2" element={<MenuList height={headerHeight}/>}/>
-                    <Route path=":category1/:category2/:itemId" element={<MenuInfo height={headerHeight} />}/>
+                    <Route path="" element={<MenuList />}/>
+                    <Route path=":category1" element={<MenuList />}/>
+                    <Route path=":category1/:category2" element={<MenuList />}/>
+                    <Route path=":category1/:category2/:itemId" element={<MenuInfo />}/>
                 </Route>
+                <Route path="/" element={<Main />} />
             </Routes>
         </BrowserRouter>
     );

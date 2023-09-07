@@ -1,14 +1,10 @@
 import { Content } from "@components/base";
 import ItemListContainer from "@containers/ItemListContainer";
 
-type MenuListType = {
-    height: number
-}
-
-function MenuList({height}: MenuListType) {
+function MenuList() {
 
     return (
-        <Content height={height}>
+        <Content >
             <ItemListContainer />
         </Content>
     );
