@@ -20,7 +20,7 @@ const StyledNavigation = styled.nav<NavProps>`
         cursor: pointer;
 
         &:not(:first-child) {
-            margin-left: 0.5vw;
+            margin-left: 1vw;
         }
 
         &:hover {

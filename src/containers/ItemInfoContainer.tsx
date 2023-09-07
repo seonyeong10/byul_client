@@ -19,6 +19,7 @@ import axios from "axios";
 import { ImgBox, InfoBox, InfoBoxChild, InfoBoxWrapper, InfoWrapper } from "@components/info";
 import { initReorder, initialState } from "@config/types/OrderType";
 import { axiosHeader } from "@config/axiosConfig";
+import { resetView, setView } from "@redux-modules/base";
 
 
 
@@ -41,20 +42,25 @@ function ItemInfoContainer() {
         })
         .then(res => {
             //메뉴를 초기화 한다.
-            console.log(res.data);
+            //console.log(res.data);
 
             const _initState = { ...initialState };
             Object.assign(_initState, { count: 1, price: res.data.price, itemId: res.data.id, temp: res.data.temp, additionalCharge: 0 });
 
             dispatch(initialize({ menu: res.data }));
             dispatch(init(_initState));
-
+            dispatch(setView({ category: res.data.category.name, name: res.data.name }));
         }).catch(err => {
             console.log(err);
             if(err.code === 'ERR_NETWORK') {
                 // alert("오류가 발생했습니다.\n관리자에게 문의하세요.");
             }
         });
+
+        //페이지를 벗어날 때 저장소 base.view 초기화
+        return () => {
+            dispatch(resetView());
+        }
     }, [dispatch]);
 
     /**

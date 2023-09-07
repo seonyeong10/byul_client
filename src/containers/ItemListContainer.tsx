@@ -70,7 +70,7 @@ function ItemListContainer() {
             headers: axiosHeader
         })
         .then(res => {
-            // console.log(res);
+            console.log(res.data);
             setFinds({
                 content: res.data.content,
                 totalPages: res.data.totalPages,
@@ -90,8 +90,6 @@ function ItemListContainer() {
      * @param id 
      */
     const onClickListContent = (path: string) => {
-        // dispatch(setView({ name: 'target', value: id }));
-        
         navigator(path);
     }
 

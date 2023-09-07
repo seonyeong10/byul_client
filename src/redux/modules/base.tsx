@@ -8,15 +8,14 @@ interface stateType {
     },
     view: { 
         [index: string]: string | number;
-        step: number,  // 0: home, 1: list, 2: list2, 3: 상세, 999: 로그인
-        dtype: string,
-        target: string | number
+        category: string,
+        name: string
     }
 }
 
 const initialState: stateType = {
     header: { visible: true, height: 0 },
-    view: { step: 1, dtype: 'M', target: 0 }
+    view: { category: '카테고리', name: '이름' }
 };
 
 const baseSlice = createSlice({
@@ -35,15 +34,18 @@ const baseSlice = createSlice({
         ) => {
             state.header.height = action.payload.height;
         },
+        resetView: (state) => {
+            Object.assign(state.view, initialState.view);
+        },
         setView: (
-            state, 
-            action: PayloadAction<{ name: string; value: string | number }>
+            state,
+            action: PayloadAction<{ category: string, name: string }>
         ) => {
-            state.view[action.payload.name] = action.payload.value;
-        } 
+            Object.assign(state.view, action.payload);
+        }
     },
     extraReducers: {}
 });
 
-export const { setHeaderVisible, setHeaderHeight, setView } = baseSlice.actions;
+export const { setHeaderVisible, setHeaderHeight, resetView, setView } = baseSlice.actions;
 export default baseSlice;
