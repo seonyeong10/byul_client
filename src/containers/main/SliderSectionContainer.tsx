@@ -42,6 +42,8 @@ function SliderSectionContainer({ title = '' }) {
                 move = -(82 / 4 + 2) * (--now);
             }
 
+            console.log(move);
+
             contentsRef.current!.style.transform = `translateX(${move}vw)`;
         },
         next: () => {
@@ -49,17 +51,19 @@ function SliderSectionContainer({ title = '' }) {
             let max = data.length;
 
             if (windowSize <= 800) {
-                move = -((90 - 3) / 3 + 1.5) * (now);
+                move = -((90 - 3) / 3 + 1.5) * (++now);
                 max -= 3;
             } else {
-                move = -(82 / 4 + 2) * (now);
+                move = -(82 / 4 + 2) * (++now);
                 max -= 4;
             }
 
-            if (now++ == max) {
+            if (now == max) {
                 --now;
                 return;
             }
+
+            console.log(move);
 
             contentsRef.current!.style.transform = `translateX(${move}vw)`;
         }

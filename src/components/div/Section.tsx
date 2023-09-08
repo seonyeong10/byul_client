@@ -36,6 +36,7 @@ const Section = styled.div`
                 }
 
                 &.previous {
+                    float: left;
                     background-image: url('http://localhost:5173/src/assets/icons/chevron-left_d.svg');
                 }
 
