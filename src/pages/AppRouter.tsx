@@ -8,8 +8,7 @@ import Cart from "./Cart";
 import OrderHistory from "./OrderHistory";
 import OrderHistoryInfo from "./OrderHistoryInfo";
 
-import { useDispatch, useSelector } from "react-redux"; 
-import { RootState } from "@redux-modules/index";
+import { useDispatch } from "react-redux"; 
 import AuthCallback from "./AuthCallback";
 import { useEffect } from "react";
 import axios from "axios";
@@ -22,7 +21,7 @@ import Main from "./Main";
 
 
 function AppRouter() {
-    const headerHeight = useSelector((state: RootState) => state.base.header.height);
+    //const headerHeight = useSelector((state: RootState) => state.base.header.height);
     const dispatch = useDispatch();
 
     useEffect(() => {

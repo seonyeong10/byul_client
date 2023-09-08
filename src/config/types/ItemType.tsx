@@ -79,3 +79,11 @@ export interface InnerItemType {
         dir: string
     }
 }
+
+export interface EasyItemType {
+    id: number,
+    category: CategoryType,
+    name: string,
+    attachFiles?: Array<AttachFileType>
+    created_date?: string,
+}

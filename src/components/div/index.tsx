@@ -4,3 +4,4 @@ export { ToggleBox } from './ToggleBox';
 export { Grid, GridBox, GridFooter } from './GridBox';
 export { Center } from './Center';
 export { Line } from './Line';
+export { Section } from './Section';

@@ -11,10 +11,14 @@ const Header = styled.div<HeaderType>`
     background-color: #fff;
 
     width: 90vw; //body: padding: 0 5vw
-    padding-top: 1vw;
+    //padding-top: 1vw;
+    padding: 1vw 5vw 0;
+    margin: 0 -5vw;
 
     //position: fixed;
     position: sticky;
+    top: 0;
+    z-index: 999;
 `;
 
 //== component ==//

@@ -67,19 +67,10 @@ const Container = styled.div`
 
         a {
             display: inline-block;
-            padding: 0.8rem;
-            //padding: 1rem 2rem;
-            //background-image: url('http://localhost:5173/src/assets/icons/line_d.svg');
-            background-image: url('http://localhost:5173/src/assets/icons/dot_d.svg');
-    
-            &:not(:first-child) {
-                margin-left: 5px;
-                //margin-left: 1vw;
-            }
-
-            &:hover {
-                //background-image: url('http://localhost:5173/src/assets/icons/line_w.svg');
-                background-image: url('http://localhost:5173/src/assets/icons/dot_w.svg');
+            padding: 1rem;
+            background-image: url('http://localhost:5173/src/assets/icons/dot-lined.svg');
+            &:hover, &.current {
+                background-image: url('http://localhost:5173/src/assets/icons/dot-filled.svg');
             }
         }
     } 

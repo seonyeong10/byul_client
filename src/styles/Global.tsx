@@ -10,6 +10,13 @@ const GlobalStyle = createGlobalStyle`
       margin: 0 5vw;
       letter-spacing: -1px;
       font-family: PretendartRegular, sans-serif, Arial;
+      overflow-x: hidden;
+
+    }
+    
+    #root {
+      position: relative;
+      height: 100%;
     }
 
     ul, ol {

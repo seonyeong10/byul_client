@@ -13,7 +13,7 @@ function CarouselContainer () {
         "/src/assets/carousel/IMG_2756.JPG",
         "/src/assets/carousel/IMG_2757.JPG"
     ];
-    let now = 1;
+    let now = 0;
     const max = images.length - 1;
 
     useEffect(() => {
