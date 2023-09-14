@@ -49,7 +49,7 @@ function ProfileContainer() {
                 <ModalMenu>
                     <img src="http://localhost:5173/src/assets/icons/user-profile.svg" />
                     {userName}
-                    <Link className="drop" to="#" onClick={() => openUserMenu()}>{userName}</Link>
+                    <Link className="drop" to="#" onClick={() => openUserMenu()}></Link>
                 </ModalMenu>
                 <ModalMenu ref={barMenuRef}>
                     <Anchor to="/">홈</Anchor>

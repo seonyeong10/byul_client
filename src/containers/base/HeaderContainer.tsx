@@ -84,7 +84,7 @@ function HeaderContainer() {
             <HeaderWrapper ref={refHead}>
                 <HeaderTop>
                     <Flex>
-                        <HeadLine onClick={() => onClickLogo()}>LOGO</HeadLine>
+                        <HeadLine onClick={() => onClickLogo()}>COFFEE</HeadLine>
                     </Flex>
                     <ButtonS type="button" onClick={() => goLoginPage()}>로그인</ButtonS>
                 </HeaderTop>

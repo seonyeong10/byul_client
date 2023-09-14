@@ -19,7 +19,7 @@ const Section = styled.div`
             width: 100%;
             height: 100%;
             position:absolute;
-            z-index: 1;
+            // z-index: 1;
             button {
                 width: 2vw;
                 height: 100%;
@@ -29,7 +29,8 @@ const Section = styled.div`
                 background-color: rgba(255, 255, 255, 0);
                 border: none;
                 cursor: pointer;
-                z-index: 1;
+                position: relative;
+                z-index: 2;
 
                 &:hover {
                     background-color: rgba(0, 0, 0, 0.15);
@@ -55,6 +56,9 @@ const Section = styled.div`
                 float: left;
                 width: calc(82vw / 4); //90vw-8vw
                 text-align: center;
+                cursor: pointer;
+                position: relative;
+                z-index: 1;
 
                 &:not(:first-child) {
                     margin-left: 2vw;
@@ -72,6 +76,7 @@ const Section = styled.div`
         }
 
         .contents {
+            text-align: left;
             .item {
                 display: inline-block;
                 width: calc((100% - 8rem) / 5);
@@ -92,6 +97,7 @@ const Section = styled.div`
             border-radius: 50px;
             cursor: pointer;
             font-size: 15px;
+            text-align: center;
 
             &:hover {
                 background-color: ${colors.black.deep};

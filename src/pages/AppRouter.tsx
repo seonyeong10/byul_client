@@ -32,6 +32,8 @@ function AppRouter() {
             return;
        }
 
+       console.log(localStorage);
+
        axios.post("http://localhost:8090/api/v1/login/reissue", {
            "accessToken": localStorage.getItem("accessToken"),
            "refreshToken": localStorage.getItem("refreshToken")

@@ -1,8 +1,11 @@
 import { Section } from "@components/div";
 import { HeadLine } from "@components/title";
-import { AttachFileType, EasyItemType } from "@config/types/ItemType";
+import { axiosHeader } from "@config/axiosConfig";
+import { EasyItemType } from "@config/types/ItemType";
+import axios from "axios";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import useWindowSizeCustom from "src/lib/useWindowSizeCusotm";
 
 function SliderSectionContainer({ title = '' }) {
@@ -19,14 +22,27 @@ function SliderSectionContainer({ title = '' }) {
     ]);
     let now = 0;
     const windowSize = useWindowSizeCustom();
+    const navigator = useNavigate();
 
     //== refs ==//
     const contentsRef = useRef<HTMLDivElement>(null);
 
+
+    useEffect(() => {
+        axios.get("http://localhost:8090/api/v1/items/latest", { headers: axiosHeader })
+        .then (res => {
+            contentsRef.current!.style.width = `${(res.data.length / 4 + 1) * 100}vw`;
+            setData(res.data);
+        }).catch (err => {
+            console.log(err);
+        })
+    }, []);
+
+
     //== functions ==//
-    const getFilePath = (files: AttachFileType[] | undefined) => {
-        if (files !== undefined) 
-            return `http://localhost:8090/api/v1/image/${files[0]!.id}`;
+    const getFilePath = (id: number | undefined) => {
+        if (id !== undefined) 
+            return `http://localhost:8090/api/v1/image/${id}`;
 
         return '/src/assets/test.png';
     }
@@ -41,8 +57,6 @@ function SliderSectionContainer({ title = '' }) {
             } else {
                 move = -(82 / 4 + 2) * (--now);
             }
-
-            console.log(move);
 
             contentsRef.current!.style.transform = `translateX(${move}vw)`;
         },
@@ -63,10 +77,13 @@ function SliderSectionContainer({ title = '' }) {
                 return;
             }
 
-            console.log(move);
-
             contentsRef.current!.style.transform = `translateX(${move}vw)`;
         }
+    }
+
+    const moveTo = (info: EasyItemType) => {
+        const url = `/menus/${info.category.parent?.engName}/${info.category.engName}/${info.id}`;
+        navigator(url);
     }
 
     
@@ -82,8 +99,8 @@ function SliderSectionContainer({ title = '' }) {
                     {
                         data.map(d => {
                             return (
-                                <div className="slide">
-                                    <img src={getFilePath(d.attachFiles)} alt={`이달의 신상품-${d.name}`}/>
+                                <div className="slide" onClick={() => moveTo(d)}>
+                                    <img src={getFilePath(d.attachFileId)} alt={`이달의 신상품-${d.name}`}/>
                                     <p>{d.name}</p>
                                 </div>
                             )

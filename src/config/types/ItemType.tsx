@@ -84,6 +84,6 @@ export interface EasyItemType {
     id: number,
     category: CategoryType,
     name: string,
-    attachFiles?: Array<AttachFileType>
+    attachFileId?: number,
     created_date?: string,
 }

@@ -21,6 +21,11 @@ function AuthCallbackContainer() {
             headers: axiosHeader
         }).then(res => {
             // console.log(res);
+            if (res.data === null || res.data == undefined) {
+                alert("유효하지 않은 로그인입니다.");
+                return;
+            }
+
             const member = toUserType(res.data);
 
             console.log('member >>> ', member);

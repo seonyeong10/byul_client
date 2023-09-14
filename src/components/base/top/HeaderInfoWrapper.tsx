@@ -17,7 +17,7 @@ const HeaderIconBtn = styled(IconButton)`
 `;
 
 const HeaderSectionTit = styled(SectionTitle)`
-    width: 120px;
+    min-width: 120px;
     padding-right: 0;
     text-align: center;
 `;

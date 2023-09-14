@@ -5,7 +5,7 @@ import { Button, LinedButton } from "@components/button";
 import { useEffect, useState } from "react";
 import { OrderItemType } from "@config/types/OrderType";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { PrepareType } from "@config/types/PaymentType";
 //import { useDispatch, useSelector } from "react-redux";
 //import { RootState } from "@redux-modules/index";
@@ -17,6 +17,7 @@ function OrderPayContainer() {
 
     const params = useParams();
     const [pay_method, setMethod] = useState('card');
+    const navigator = useNavigate();
 
     //== axios ==//
     const axiosHeader = {
@@ -34,6 +35,7 @@ function OrderPayContainer() {
 
             if (data.status[0] !== 'ORDER') {
                 alert("이미 결재 완료된 주문입니다.");
+                navigator(-1);
                 return;
             }
             setOrder(data.orderItems);
@@ -68,7 +70,6 @@ function OrderPayContainer() {
             //tid를 저장한다.
             paymentTid.value = res.data.tid;
             window.open(res.data.next_redirect_pc_url, "_blank");
-
         }).catch (err => {
             console.log(err);
         })
@@ -77,8 +78,8 @@ function OrderPayContainer() {
     return(
         <GapFlex direction="column" gap={2}>
             <PageTitle>결제하기</PageTitle>
-            <input type="text" name="orderId" value={params.orderId} id="payment-orderId" />
-            <input type="text" name="tid" value="" id="payment-tid" />
+            <input type="hidden" name="orderId" value={params.orderId} id="payment-orderId" />
+            <input type="hidden" name="tid" value="" id="payment-tid" />
             <GreyBox>
                 <GroupName>주문 내역</GroupName>
                 <PaddingBox>

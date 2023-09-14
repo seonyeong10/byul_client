@@ -153,12 +153,12 @@ function ItemInfoContainer() {
                 <GapFlex gap={1}>
                     <SectionTitle>판매 오픈</SectionTitle>
                     {/* 2023.08.04 19:30 */}
-                    {menu?.startDate}
+                    {new Date(menu?.startDate).toLocaleString("ko-KR", { dateStyle: "long", timeStyle: "short" })}
                 </GapFlex>
                 <GapFlex gap={1}>
                     <SectionTitle>판매 종료</SectionTitle>
                     {/* 2023.08.04 19:30 */}
-                    {menu.endDate ?? '상시판매'}
+                    {menu.endDate ? new Date(menu?.endDate).toLocaleString("ko-KR", { dateStyle: "long", timeStyle: "short" }) : '상시판매'}
                 </GapFlex>
             </InfoBoxWrapper>
 
@@ -167,10 +167,10 @@ function ItemInfoContainer() {
                     <SectionTitle>상품 정보</SectionTitle>
                     {menu.etc}
                 </InfoBox>
-                <GapFlex gap={1}>
+                {/* <GapFlex gap={1}>
                     <SectionTitle>알러지 유발 물질</SectionTitle>
                     복숭아, 대두
-                </GapFlex>
+                </GapFlex> */}
                 <MenuDetailContainer />
             </InfoBoxWrapper>
         </InfoWrapper>
