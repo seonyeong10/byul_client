@@ -92,6 +92,13 @@ const GlobalStyle = createGlobalStyle`
       }
     }
 
+    /*모달*/
+    .ReactModalPortal {
+      div {
+        z-index: 999;
+      }
+    }
+
     @media screen and (max-width: 800px) {
       /*모달*/
       #myModal {

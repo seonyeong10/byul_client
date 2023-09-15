@@ -20,7 +20,7 @@ const StyledNavigation = styled.nav<NavProps>`
         cursor: pointer;
 
         &:not(:first-child) {
-            margin-left: 1vw;
+            margin-left: 2vw;
         }
 
         &:hover {
@@ -41,7 +41,8 @@ const Navigation = forwardRef<HTMLDivElement, NavProps>(({ condition = "", child
         <StyledNavigation 
             ref={ref}
             condition={condition}
-            className={condition === "" ? "header-delimiter" : ""}>
+            className={condition === "" ? "header-delimiter" : ""} 
+        >
             {children}
         </StyledNavigation>
     );

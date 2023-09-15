@@ -125,9 +125,10 @@ function HeaderContainer() {
                 </Flex>
                 
                 {
-                    member.id < 0 ?
-                    <ButtonS type="button" onClick={() => goLoginPage()}>로그인</ButtonS>
-                    : <ProfileContainer />
+                    // member.id < 0 ?
+                    // <ButtonS type="button" onClick={() => goLoginPage()}>로그인</ButtonS>
+                    // : 
+                    <ProfileContainer />
                 }
             </HeaderTop>
             <SubHeaderContainer />

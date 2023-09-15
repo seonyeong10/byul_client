@@ -1,8 +1,8 @@
-import { Center, GapFlex } from "@components/div";
+import { GapFlex } from "@components/div";
 // import reactSvg from "@assets/react.svg";
 import { ButtonWrap, Charge, CircleImg, /*Discount,*/ GreyBox, GroupName, LineBox, MethodWrap, PaddingBox, PageTitle, PayMethod } from "@components/payment";
 import { Button, LinedButton } from "@components/button";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { OrderItemType } from "@config/types/OrderType";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";

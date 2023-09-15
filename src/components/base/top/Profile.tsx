@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { ReactNode } from "react";
-import colors from "src/styles/Colors";
 import { forwardRef } from "react";
 
 type ProfileType = {

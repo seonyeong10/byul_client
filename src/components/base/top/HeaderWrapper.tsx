@@ -18,7 +18,7 @@ const Header = styled.div<HeaderType>`
     //position: fixed;
     position: sticky;
     top: 0;
-    z-index: 999;
+    //z-index: 999;
 `;
 
 //== component ==//

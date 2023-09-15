@@ -75,7 +75,7 @@ function ItemListContainer() {
                 content: res.data.content,
                 totalPages: res.data.totalPages,
                 totalElements: res.data.totalElements,
-                size: res.data.sies,
+                size: res.data.size,
                 number: res.data.number
             });
         }).catch(err => {
@@ -113,16 +113,17 @@ function ItemListContainer() {
                 </Flex>
             </ListHeader>
             
-            <ListBody key="key1" imgSrc={reactSvg} name="아이스 아메리카노" path="/menus/drink/espresso/0" onClick={onClickListContent} />
+            {/* <ListBody key="key1" imgSrc={reactSvg} name="아이스 아메리카노" path="/menus/drink/espresso/0" onClick={onClickListContent} /> */}
             {
                 (finds.content.length > 0)
-                && finds.content?.map(item =>
-                    <ListBody
+                && finds.content?.map(item => {
+                    return (<ListBody
                         key={`${item.id}|${item.name}`}
                         path={`/${params.dtype}/${item.category.parent?.engName}/${item.category.engName}/${item.id}`}
                         name={item.name}
                         imgSrc={`http://localhost:8090/api/v1/image/${item.attachFileId}`}
-                        onClick={onClickListContent} />
+                        onClick={onClickListContent} />);
+                    }
                 )
             }
 

@@ -13,10 +13,10 @@ function ProfileContainer() {
     const [isOpen, setOpen] = useState(false);
 
     //== redux ==//
-    const { userId, userName, userAuth } = useSelector((state: RootState) => ({
+    const { userId, userName/*, userAuth*/ } = useSelector((state: RootState) => ({
         userName: state.user.name,
         userId : state.user.id,
-        userAuth: state.user.auth
+        //userAuth: state.user.auth
     }));
 
     //== function ==//
