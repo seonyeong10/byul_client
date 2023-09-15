@@ -1,47 +1,48 @@
-import { Center } from "@components/div";
+import { axiosHeader } from "@config/axiosConfig";
 import { PaymentType } from "@config/types/PaymentType";
+import { RootState } from "@redux-modules/index";
 import axios from "axios";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useParams, useSearchParams } from "react-router-dom";
+
 
 function SuccessContainer() {
 
     const path_variable = useParams(); //PathVariable
     const [query_string] = useSearchParams(); //QureyString
+    const message = window.opener.receiveMessage();
     const payment: PaymentType = {
-        order_id: window.opener.document.querySelector("#payment-orderId").value,
+        order_id: message.order_id,
         pg_token: query_string.get("pg_token") ?? "",
-        tid: window.opener.document.querySelector("#payment-tid").value,
+        tid: message.tid
     }
-    const postUrl = `http://localhost:8090/api/v1/order/${35}/pay/${path_variable.platform}`;
+    const userId = useSelector((state: RootState) => state.user.id);
+    const postUrl = `http://localhost:8090/api/v1/order/${userId}/pay/${path_variable.platform}`;
 
-    //== axios ==//
-    const axiosHeader = {
-        "Content-type": 'application/json;charset=UTF-8'
-    };
+    
+    console.log(userId, payment);
 
-
-    console.log('PathVariable', path_variable);
-    console.log('QureyString', query_string);
-    console.log('payment', payment);
+    window.opener.parentCallback('success');
 
     //POST /api/v1/order/{memberId}/pay/{platform}
     useEffect(() => {
         axios.post(postUrl, payment, {  
             headers: axiosHeader
         }).then(res => {
-            console.log(res);
-            alert(res.data);
+            //console.log(res);
+            if (res.status === 200) {
+                window.opener.parentCallback('success');
+            } else {
+                window.opener.parentCallback('fail');
+            }
             window.close();
         }).catch(err => {
             console.log(err);
         });
-
     }, []);
 
-    return (
-        <Center>결제가 완료되었습니다.</Center>
-    );
+    return <></>;
 }
 
 export default SuccessContainer;

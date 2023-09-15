@@ -79,6 +79,10 @@ function HeaderContainer() {
         window.location.href = '/login';
     }
 
+    if (params.includes("success") || params.includes("failed")) {
+        return null;
+    }
+
     if (!headerVisible) {
         return (
             <HeaderWrapper ref={refHead}>
