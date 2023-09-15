@@ -18,6 +18,7 @@ import Logout from "./Logout";
 import OrderPay from "./OrderPay";
 import Success from "./pay/Success";
 import Main from "./Main";
+import ItemMain from "./menus/ItemMain";
 
 
 function AppRouter() {
@@ -67,7 +68,8 @@ function AppRouter() {
                     <Route path=":orderId" element={<OrderPay />}/>
                 </Route>
                 <Route path="/:dtype" >
-                    <Route path="" element={<MenuList />}/>
+                    {/* <Route path="" element={<MenuList />}/> */}
+                    <Route path="" element={<ItemMain />}/>
                     <Route path=":category1" element={<MenuList />}/>
                     <Route path=":category1/:category2" element={<MenuList />}/>
                     <Route path=":category1/:category2/:itemId" element={<MenuInfo />}/>

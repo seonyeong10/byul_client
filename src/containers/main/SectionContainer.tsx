@@ -7,7 +7,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import useWindowSizeCustom from "src/lib/useWindowSizeCusotm";
 
-function SectionContainer({ title = '' }) {
+function SectionContainer({ title = '', url = '' }) {
     //== variables ==//
     const [data, setData] = useState<EasyItemType[]>([
         {id: 1, category: {id: 2, name: '에스프레소', engName: 'espresso', parent: { id: 1, name: '음료', engName: 'drinks', children: [] }, children: []}, name: '아이스 아메리카노' },
@@ -18,16 +18,16 @@ function SectionContainer({ title = '' }) {
     ]);
     const windowSize = useWindowSizeCustom();
     const [html, addHtml] = useState("<div class='item'><img src='/src/assets/test.png'/><p>테스트카노</p></div>");
-    const rimit = windowSize <= 800 ? 6 : 10;
+    const limit = windowSize <= 800 ? 6 : 10;
     let now = 0;
 
     useEffect(() => {
         console.log("랜더링");
-        
-        // const _html = showItems.init.map(d => `<div class='item'><img src='${getFilePath(d.attachFileId)}'/><p>${d.name}</p></div>`);
-        // addHtml(_html.join(""));
-        axios.get("http://localhost:8090/api/v1/items/advised", { headers: axiosHeader })
+        //showItems.init(data);
+
+        axios.get(url, { params: { limit: limit*2 },  headers: axiosHeader })
         .then(res => {
+            //console.log(res.data);
             setData(res.data);
             showItems.init(res.data);
         }).catch(err => {
@@ -46,20 +46,19 @@ function SectionContainer({ title = '' }) {
     //더 보여줄 데이터 범위 결정하기
     const showItems = {
         init: (list: EasyItemType[]) => {
-            //data.filter((d, idx) => idx < rimit)
-            const _html = list.map(d => `<div class='item'><img src='${getFilePath(d.attachFileId)}'/><p>${d.name}</p></div>`);
+            const _html = list.filter((d, idx) => idx < limit).map(d => `<div class='item'><img src='${getFilePath(d.attachFileId)}'/><p>${d.name}</p></div>`);
             addHtml(_html.join(""));
         },
         next: (n: number) => {
-            const start = n*rimit;
-            const end = ++n * rimit;
+            const start = n*limit;
+            const end = ++n * limit;
             return data.filter((d, idx) => idx >= start && idx < end);
         }
     };
 
     //상품 더 보여주기
     const viewMore = (n: number) => {
-        if (n * rimit >= data.length) return;
+        if (n * limit >= data.length) return;
 
         const add = showItems.next(n).map(d => 
             `<div class='item'><img src='${getFilePath(d.attachFileId)}'/><p>${d.name}</p></div>`).join("");
@@ -76,7 +75,7 @@ function SectionContainer({ title = '' }) {
                         data.map(d => {
                             return (
                                 <div className="item">
-                                    <img src={getFilePath(d.attachFiles)} alt={`추천 상품-${d.name}`}/>
+                                    <img src={getFilePath(d.attachFiles)} alt={`${d.name}`}/>
                                     <p>{d.name}</p>
                                 </div>
                             )
@@ -84,7 +83,7 @@ function SectionContainer({ title = '' }) {
                     */}                    
                 </div>
                 {
-                    data.length > rimit && <button className="view-more" onClick={() => viewMore(++now)}>더보기</button>
+                    data.length > limit && <button className="view-more" onClick={() => viewMore(++now)}>더보기</button>
                 }
             </div>
         </Section>

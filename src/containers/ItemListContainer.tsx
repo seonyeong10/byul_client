@@ -64,6 +64,7 @@ function ItemListContainer() {
     
     //== rendering ==//
     useEffect(() => {
+        console.log(url());
 
         axios.get(url(), {
             params: search,
@@ -105,7 +106,7 @@ function ItemListContainer() {
     return (
         <ListWrapper gap={{all: 2}} >
             <ListHeader padding={{bottom: 0.8}}>
-                <SectionTitle>0개의 메뉴</SectionTitle>
+                <SectionTitle>{finds.totalElements}개의 메뉴</SectionTitle>
                 <Flex>
                     <Anchor condition="select" onClick={() => onClickOrder('default')}>기본순</Anchor>
                     <Anchor condition="delemiter" onClick={() => onClickOrder('newest')}>최신순</Anchor>

@@ -29,7 +29,7 @@ function SliderSectionContainer({ title = '' }) {
 
 
     useEffect(() => {
-        axios.get("http://localhost:8090/api/v1/items/latest", { headers: axiosHeader })
+        axios.get("http://localhost:8090/api/v1/menus/latest", { headers: axiosHeader })
         .then (res => {
             contentsRef.current!.style.width = `${(res.data.length / 4 + 1) * 100}vw`;
             setData(res.data);
