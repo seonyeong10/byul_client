@@ -1,24 +1,24 @@
-import HeaderContainer from "@containers/base/HeaderContainer";
+import HeaderContainer from "@containers/base/header/HeaderContainer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Auth from "./Auth";
-import MenuList from "./MenuList";
-import MenuInfo from "./MenuInfo";
-import Cart from "./Cart";
-import OrderHistory from "./OrderHistory";
-import OrderHistoryInfo from "./OrderHistoryInfo";
+import Auth from "./auth/Auth";
+import MenuList from "./item/ItemList";
+import MenuInfo from "./item/ItemInfo";
+import Cart from "./my/cart/Cart";
+import OrderHistory from "./my/history/OrderHistory";
+import OrderHistoryInfo from "./my/history/OrderHistoryInfo";
 
 import { useDispatch } from "react-redux"; 
-import AuthCallback from "./AuthCallback";
+import AuthCallback from "./auth/AuthCallback";
 import { useEffect } from "react";
 import axios from "axios";
 import { saveLocalStorage, toUserType } from "src/lib/loginAction";
 import { init } from "@redux-modules/user";
-import Logout from "./Logout";
-import OrderPay from "./OrderPay";
-import Success from "./pay/Success";
+import Logout from "./auth/Logout";
+import OrderPay from "./order/OrderPay";
+import Success from "./order/Success";
 import Main from "./Main";
-import ItemMain from "./menus/ItemMain";
+import ItemMain from "./item/ItemMain";
 
 
 function AppRouter() {

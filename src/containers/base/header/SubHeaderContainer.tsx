@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { NavigationContainer, SubNavagationContainer } from "../NavigationContainer";
+import { NavigationContainer, SubNavagationContainer } from "./NavigationContainer";
 import { CategoryType } from "@config/types/ItemType";
 import { useRef, useState } from "react";
 

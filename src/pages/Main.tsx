@@ -1,7 +1,7 @@
 import { Content } from "@components/base";
 import CarouselContainer from "@containers/main/CarouselContainer";
 import SectionContainer from "@containers/main/SectionContainer";
-import SliderSectionContainer from "@containers/main/SliderSectionContainer";
+import SliderSectionContainer from "@containers/main/SliderContainer";
 
 function Main () {
 

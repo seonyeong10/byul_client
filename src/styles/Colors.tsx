@@ -18,7 +18,8 @@ const colors = {
         base: '#F5F5F5',
         main: '#D3D3D3',
         accent: '#B0AAA8'
-    }
+    },
+    white: '#FFFFFF'
 };
 
 export default colors;

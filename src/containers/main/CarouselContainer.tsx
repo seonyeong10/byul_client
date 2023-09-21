@@ -1,5 +1,5 @@
-import { Carousel } from "@components/carousel";
-import { Slider } from "@components/carousel/Slider";
+import { Carousel } from "@components/section";
+import { Slider } from "@components/section/slider/Slider";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 

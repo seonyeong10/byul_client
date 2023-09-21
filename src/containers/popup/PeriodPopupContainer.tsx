@@ -1,11 +1,12 @@
-import { ColorButton, ColorLinedButton } from "@components/button";
-import { Center, GapFlex } from "@components/div";
-import { OptChildWrap, OptionBox } from "@components/form";
+import { CustomBtn } from "@components/button";
+import { Center, GapFlex } from "@components/section";
+import { OptChildWrap, OptionBox } from "@components/section";
 import { PeriodPopup } from "@components/popup";
 import { Note } from "@components/text";
-import { PopupTitle } from "@components/title";
+import { PopupTitle } from "@components/text";
 
 import { useRef, ChangeEvent } from "react";
+import colors from "src/styles/Colors";
 
 type PeriodPopupType = {
     open: boolean,
@@ -126,8 +127,16 @@ function PeriodPopupContainer({ params = {startDate: new Date().toISOString().su
                     최근 1년까지의 이력만 조회 가능합니다.
                 </Note>
                 <GapFlex gap={2}>
-                    <ColorLinedButton onClick={() => cancel()}>취소</ColorLinedButton>
-                    <ColorButton onClick={close}>완료</ColorButton>
+                    <CustomBtn
+                        borderColor={colors.blue.deep}
+                        color={colors.blue.deep}
+                        onClick={() => cancel()}
+                    >취소</CustomBtn>
+                    <CustomBtn
+                        borderColor={colors.blue.deep}
+                        background={colors.blue.deep}
+                        onClick={close}
+                    >완료</CustomBtn>
                 </GapFlex>
             </Center>
         </PeriodPopup>

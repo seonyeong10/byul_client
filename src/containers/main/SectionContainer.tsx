@@ -1,5 +1,5 @@
-import { Section } from "@components/div";
-import { HeadLine } from "@components/title";
+import { Section } from "@components/section";
+import { HeadLine } from "@components/text";
 import { axiosHeader } from "@config/axiosConfig";
 import { EasyItemType } from "@config/types/ItemType";
 import axios from "axios";

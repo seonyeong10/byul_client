@@ -1,6 +1,6 @@
-import { HeaderIconBtn, HeaderInfoFlex, HeaderInfoWrapper, HeaderSectionTit } from "@components/base/top";
+import { HeaderIconBtn, HeaderInfoFlex, HeaderInfoWrapper, HeaderSectionTit } from "@components/base";
 import { IconButton } from "@components/button";
-import { SubTitle } from "@components/title";
+import { SubTitle } from "@components/text";
 import { RootState } from "@redux-modules/index";
 import { useSelector } from "react-redux";
 

@@ -1,2 +1,2 @@
-export { HeadLine, SectionTitle, PopupTitle } from './HeadLines'
-export { SubTitle, ColorEmpasis } from './SubTitles';
+export { HeadLine, SectionTitle, PopupTitle } from '../text/HeadLines'
+export { SubTitle, ColorEmpasis } from '../text/SubTitles';
