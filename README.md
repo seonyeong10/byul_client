@@ -52,3 +52,15 @@
 ## 화면 흐름도
 
 ![screenFlow](https://github.com/seonyeong10/byul_client/assets/78454631/533cd04f-93d3-4d44-b2e5-2d79a5542bfe)
+
+<br/>
+
+## 구동 화면
+- 홈
+  ![main_animation](https://github.com/seonyeong10/banjjok/assets/78454631/3414ac56-77ad-4ff5-beaf-a43e1e2e2f10)
+  
+- 로그인
+  ![login_animation3](https://github.com/seonyeong10/banjjok/assets/78454631/6fd9651d-1404-4031-947b-c27acef84b57)
+
+- 주문·결제
+  ![pay_animation3](https://github.com/seonyeong10/banjjok/assets/78454631/434b48f4-20ac-44e8-85fe-19f97ad5a7fe)
