@@ -1,10 +1,11 @@
+import { PersonalOption } from "@containers/item/PersonalOption";
+
 import { CircleBtn, Count, DDA } from "@components/button";
-import { JustifyFlex } from "@components/section";
+import { InnerForm, JustifyFlex, ItemChild } from "@components/section";
 import { ItemWithLabel, OptChildWrap, OptionBox } from "@components/section";
-import { PersonalOption } from "@components/section/div/PersonalOption";
 import { Select } from "@components/section/form/Select";
-import { FormBox, InfoBoxChild } from "@components/section";
 import { ColorEmpasis } from "@components/text";
+
 import { SelectType } from "@config/types/FormType";
 import { MenuDetailType } from "@config/types/ItemType";
 import { initReorder } from "@config/types/OrderType";
@@ -78,8 +79,8 @@ function OrderContainer() {
 
 
     return (
-        <FormBox gap={2}>
-            <InfoBoxChild direction="column" gap={1}>
+        <InnerForm gap={2}>
+            <ItemChild direction="column" gap={1}>
                 <ItemWithLabel label="사이즈" key="size">
                     <Select id="form-size" name="sizes" ref={el => refSelect.current[0] = el} onChange={(e: any) => handleSelect({ idx: 0, name: e.target.name, value: e.target.value })}>
                         <option value={""}>사이즈를 선택하세요.</option>
@@ -99,7 +100,7 @@ function OrderContainer() {
                     open={personal}
                     // ref={refPersonal}
                 />
-            </InfoBoxChild>
+            </ItemChild>
             <JustifyFlex>
                     <OptionBox name="주문금액">
                         <OptChildWrap>
@@ -110,7 +111,7 @@ function OrderContainer() {
                         </OptChildWrap>
                     </OptionBox>
             </JustifyFlex>
-        </FormBox>
+        </InnerForm>
     );
 }
 

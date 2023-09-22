@@ -1,5 +1,5 @@
 import { CountBtnLump } from "@components/button";
-import { InfoBoxChild } from "@components/section";
+import { ItemChild } from "@components/section";
 import { SectionTitle } from "@components/text";
 import { SyrupType } from "@config/types/ItemType";
 import { OptChildWrap, OptionBox, RadioLabel } from "@components/section";
@@ -167,7 +167,7 @@ const PersonalOption = ({ open }: Type) => {
 
 
     return (
-        <InfoBoxChild direction="column" gap={1}>
+        <ItemChild direction="column" gap={1}>
             <OptionBox name="에스프레소 샷">
                 <CountBtnLump
                     variable="espresso"
@@ -233,7 +233,7 @@ const PersonalOption = ({ open }: Type) => {
                     </RadioLabel>
                 </OptChildWrap>
             </OptionBox>
-        </InfoBoxChild>
+        </ItemChild>
     );
 }
 // });

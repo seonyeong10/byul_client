@@ -1,5 +1,5 @@
 import { Btn, IconButton } from "@components/button";
-import { GapFlex, TagBox, ToggleBox } from "@components/section";
+import { GapFlex, ItemChild, TagBox, ToggleBox } from "@components/section";
 import { SectionTitle } from "@components/text";
 
 import reactSvg from "@assets/react.svg";
@@ -16,10 +16,12 @@ import { RootState } from "src/redux/modules";
 import MenuDetailContainer from "./menu/MenuDetailContainer";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { ImgBox, InfoBox, InfoBoxChild, InfoBoxWrapper, InfoWrapper } from "@components/section";
+import { ImgBox, InfoBoxChild} from "@components/section";
 import { initReorder, initialState } from "@config/types/OrderType";
 import { axiosHeader } from "@config/axiosConfig";
 import { resetView, setView } from "@redux-modules/base";
+
+import { ItemInfo, ItemWrapper } from "@components/section";
 
 
 
@@ -117,11 +119,11 @@ function ItemInfoContainer() {
 
 
     return (
-        <InfoWrapper direction="column" gap={2}>
-            <InfoBoxWrapper gap={2}>
+        <GapFlex direction="column" gap={2}>
+            <ItemWrapper gap={2}>
                 <ImgBox imgSrc={menu.attachFiles.length < 1 ? reactSvg : `http://localhost:8090/api/v1/image/${menu.attachFiles[0].id}`} />
-                <InfoBox direction="column" gap={1}>
-                    <InfoBoxChild direction="column" gap={1}>
+                <ItemInfo direction="column" gap={1}>
+                    <ItemChild direction="column" gap={1}>
                         <p>
                             {/* <TagBox condition='picked'>추천</TagBox> */}
                             {/* <TagBox condition='season'>시즌</TagBox> */}
@@ -137,7 +139,7 @@ function ItemInfoContainer() {
                             <span className={menu.temp === 'ICED'? 'on' : ''}>ICED</span>
                         </ToggleBox>
                         <TextSizeR>{menu.price.toLocaleString('ko-KR')} 원</TextSizeR>
-                    </InfoBoxChild>
+                    </ItemChild>
 
                     <OrderContainer />
 
@@ -146,10 +148,10 @@ function ItemInfoContainer() {
                         <IconButton className="icon cart" onClick={() => addCart()}></IconButton>
                         <Btn onClick={() => onClickOrder()}>주문하기</Btn>
                     </GapFlex>
-                </InfoBox>
-            </InfoBoxWrapper>
+                </ItemInfo>
+            </ItemWrapper>
 
-            <InfoBoxWrapper direction="column" gap={0.5}>
+            <ItemWrapper direction="column" gap={0.5}>
                 <GapFlex gap={1}>
                     <SectionTitle>판매 오픈</SectionTitle>
                     {/* 2023.08.04 19:30 */}
@@ -160,20 +162,20 @@ function ItemInfoContainer() {
                     {/* 2023.08.04 19:30 */}
                     {menu.endDate ? new Date(menu?.endDate).toLocaleString("ko-KR", { dateStyle: "long", timeStyle: "short" }) : '상시판매'}
                 </GapFlex>
-            </InfoBoxWrapper>
+            </ItemWrapper>
 
-            <InfoBoxWrapper direction="column" gap={2}>
-                <InfoBox direction="column" gap={1}>
+            <ItemWrapper direction="column" gap={2}>
+                <ItemInfo direction="column" gap={1}>
                     <SectionTitle>상품 정보</SectionTitle>
                     {menu.etc}
-                </InfoBox>
+                </ItemInfo>
                 {/* <GapFlex gap={1}>
                     <SectionTitle>알러지 유발 물질</SectionTitle>
                     복숭아, 대두
                 </GapFlex> */}
                 <MenuDetailContainer />
-            </InfoBoxWrapper>
-        </InfoWrapper>
+            </ItemWrapper>
+        </GapFlex>
     );
 }
 

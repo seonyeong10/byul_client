@@ -1,6 +1,6 @@
 import { ToggleBox } from "@components/section";
 import { OptChildWrap, OptionBox } from "@components/section";
-import { InfoBoxChild } from "@components/section";
+import { ItemChild } from "@components/section";
 import { MenuDetailType } from "@config/types/ItemType";
 
 import { useRef, useState } from "react";
@@ -35,7 +35,7 @@ function MenuDetailContainer() {
 
     
     return (
-        <InfoBoxChild direction="column" gap={1}>
+        <ItemChild direction="column" gap={1}>
             <ToggleBox ref={refToggle}>
                 {
                     menuDetail.map((md, idx) =>
@@ -82,7 +82,7 @@ function MenuDetailContainer() {
                     : ''
                 }
             </p>
-        </InfoBoxChild>
+        </ItemChild>
     );
 }
 

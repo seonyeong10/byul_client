@@ -1,7 +1,7 @@
 import { CustomBtn } from "@components/button";
-import { GapFlex } from "@components/section";
-import { OptChildWrap, OptionBox } from "@components/section";
-import { DetailBox, DetailWrapper, InfoStatusWrapper, Status, StatusWrap } from "@components/section";
+import { HistoryInfo, OptChildWrap, OptionBox } from "@components/section";
+import { GapFlex, OrderStatusWrapper } from "@components/section";
+import { HistoryWrapper, Status, StatusWrap } from "@components/section";
 import { TName } from "@components/section";
 import { ColorEmpasis } from "@components/text";
 import styled from "styled-components";
@@ -128,7 +128,7 @@ function OrderHistoryInfoContainer() {
     }
 
     return (
-        <InfoStatusWrapper >
+        <OrderStatusWrapper >
             <StatusWrap>
                 {
                     history?.status[0] === 'CANCEL' ?
@@ -155,11 +155,11 @@ function OrderHistoryInfoContainer() {
                 </Status>
             </StatusWrap>
 
-            <DetailWrapper>
+            <HistoryWrapper>
                 {
                     history?.orderItems.map(ordered => {
                         return (
-                            <DetailBox>
+                            <HistoryInfo>
                                 <TName>{ordered.item.name}</TName>
                                 <OptionBox name={`${ordered.temp} | ${ordered.sizes} | ${ordered.pack}`}>
                                     <OptChildWrap><b>{ordered.price.toLocaleString("ko-KR")}원</b></OptChildWrap>
@@ -167,11 +167,11 @@ function OrderHistoryInfoContainer() {
                                 {displayOption.espresso(ordered.espresso)}
                                 {displayOption.syrup(ordered.syrup)}
                                 {displayOption.milk(ordered.milkType)}
-                            </DetailBox>
+                            </HistoryInfo>
                         );
                     })
                 }
-                <DetailBox>
+                <HistoryInfo>
                     <TName>아이스 아메리카노</TName>
                     <OptionBox name={`ICED | Tall | 일회용컵`}>
                         <OptChildWrap><b>4,500원</b></OptChildWrap>
@@ -182,22 +182,22 @@ function OrderHistoryInfoContainer() {
                     <OptionBox name={`바닐라 시럽 1`}>
                         <OptChildWrap><b>600원</b></OptChildWrap>
                     </OptionBox>
-                </DetailBox> 
+                </HistoryInfo> 
                 <OptionBox name={`합계`}>
                     <OptChildWrap><b>{history?.totalPrice.toLocaleString("ko-KR")}원</b></OptChildWrap>
                 </OptionBox>
-            </DetailWrapper>
+            </HistoryWrapper>
 
-            <DetailWrapper>
-                <DetailBox>
+            <HistoryWrapper>
+                <HistoryInfo>
                     <OptionBox name={`신용카드`}>
                         <OptChildWrap><b>{history?.totalPrice.toLocaleString("ko-KR")}원</b></OptChildWrap>
                     </OptionBox>
-                </DetailBox>
+                </HistoryInfo>
                 <OptionBox name={`총 ${history?.totalCount}개`}>
                     <OptChildWrap><ColorEmpasis>{history?.totalPrice.toLocaleString("ko-KR")}원</ColorEmpasis></OptChildWrap>
                 </OptionBox>
-            </DetailWrapper>
+            </HistoryWrapper>
 
             <ButtonWrap>
                 <GapFlex gap={2}>
@@ -226,7 +226,7 @@ function OrderHistoryInfoContainer() {
                 </GapFlex>
             </ButtonWrap>
 
-        </InfoStatusWrapper>
+        </OrderStatusWrapper>
     );
 }
 
